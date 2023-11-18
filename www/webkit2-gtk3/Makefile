@@ -1,5 +1,5 @@
 PORTNAME=	webkit
-DISTVERSION=	2.34.6
+DISTVERSION=	2.38.3
 PORTREVISION=	9
 CATEGORIES=	www
 MASTER_SITES=	https://webkitgtk.org/releases/
@@ -8,7 +8,8 @@ DISTNAME=	${PORTNAME}gtk-${PORTVERSION}
 DIST_SUBDIR=	gnome
 
 PATCH_SITES=	https://github.com/WebKit/WebKit/commit/
-PATCHFILES=	06f9978e52a8408ed6c2c8296afb1e7449c2f1ee.patch:-p1 # https://bugs.webkit.org/show_bug.cgi?id=247770
+PATCHFILES=     285ff73b5f6d46d6e502aca30061667e41a3114b.diff:-p1
+
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Opensource browser engine using the GTK 3 toolkit
@@ -56,6 +57,7 @@ CMAKE_ARGS=		-DPORT=GTK
 CMAKE_OFF=		USE_LD_GOLD ${CMAKE_OFF_${ARCH}:U} \
 			ENABLE_GLES2 \
 			USE_SYSTEMD \
+			ENABLE_JOURNALD_LOG \
 			ENABLE_GAMEPAD
 CMAKE_ON=		ENABLE_MINIBROWSER \
 			USE_SYSTEM_MALLOC \
